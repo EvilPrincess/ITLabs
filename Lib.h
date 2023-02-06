@@ -7,9 +7,52 @@
 #include <math.h>
 using namespace std;
 
+// функции для строк
+namespace strf {
+	vector<string> split(string str, char separator = ' ');
+	unsigned int len(string str);
+}
 
-vector<string> split(string str, char separator=' ');
+// специальные невероятные лучшие гениальнейшие функции для лабораторных работ :3
+namespace SpecialFunctionsForLabs {
+	bool is_int(string str);
+	bool is_float(string str);
+	bool is_char(string str);
+	bool is_natural(string str);
 
-unsigned int len(string str);
+	template<typename T>
+	T input(string message = "", bool natural = 0)
+	{
+		cout << message;
+		string input;
+		cin >> input;
 
+		if (is_same<T, int>::value) {
+			while ((natural && !is_natural(input)) || !is_int(input)) {
+				cout << "Ошибка ввода! Повторите ввод: ";
+				cin >> input;
+			}
+			return stoi(input);
+		}
+		else if (is_same<T, float>::value) {
+			while (!is_float(input)) {
+				cout << "Ошибка ввода! Повторите ввод: ";
+				cin >> input;
+			}
+			return stof(input);  // для setlocale(LC_NUMERIC, "C")
+		}
+		else if (is_same<T, char>::value) {
+			while (!is_char(input)) {
+				cout << "Ошибка ввода! Повторите ввод: ";
+				cin >> input;
+			}
+			return input[0];
+		}
+
+		return NULL;
+	}
+}
+
+// просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
 float Q_rsqrt(float number);
+

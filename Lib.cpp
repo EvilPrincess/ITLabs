@@ -1,11 +1,13 @@
 #include "Lib.h"
 
-unsigned int len(string str) 
+using namespace strf;
+using namespace SpecialFunctionsForLabs;
+
+unsigned int strf::len(string str) 
 {
 	return (unsigned int)str.length();
 }
-
-vector<string> split(string str, char separator) 
+vector<string> strf::split(string str, char separator) 
 {
 	
 	vector<string> vec = { };
@@ -46,4 +48,52 @@ float Q_rsqrt(float number)
 	y = y * (threehalfs - (x2 * y * y));
 
 	return y;
+}
+
+bool SpecialFunctionsForLabs::is_int(string str)
+{
+	char availables[]{'-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+	if (count(str.begin(), str.end(), '-') > 0 && str[0] != '-') return false;
+	if (count(str.begin(), str.end(), '-') > 1) return false;
+
+	for (char c : str) {
+		if (find(begin(availables), end(availables), c) != end(availables)) continue;
+		else return false;
+	}
+
+	return true;
+}
+
+bool SpecialFunctionsForLabs::is_float(string str)
+{
+	char availables[]{ '-', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+	if (count(str.begin(), str.end(), '-') > 0 && str[0] != '-') return false;
+	if (count(str.begin(), str.end(), '-') > 1) return false;
+
+	if (count(str.begin(), str.end(), '.') > 1) return false;
+	if (count(str.begin(), str.end(), '.') > 0 && (str[0] == '.' || str[0] == '-' && str[1] == '.' || str.back() == '.')) return false;
+
+	for (char c : str) {
+		if (find(begin(availables), end(availables), c) != end(availables)) continue;
+		else return false;
+	}
+
+	return true;
+}
+
+bool SpecialFunctionsForLabs::is_natural(string str)
+{
+	char availables[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+	if (!is_int(str) || stoi(str) < 1) return false;
+
+	return true;
+}
+
+bool SpecialFunctionsForLabs::is_char(string str)
+{
+	if (len(str) == 1) return true;
+	return false;
 }
