@@ -2,28 +2,8 @@
 
 using namespace SpecialFunctionsForLabs;
 using namespace strf;
+using namespace arrf;
 
-
-template <typename T>
-void fill_random(T* arr, size_t size, int low, int high) {
-	if (is_same<T, int>::value)
-		for (int i = 0; i < size; i++) {
-			*(arr + i) = randint(low, high);
-		}
-	else
-		for (int i = 0; i < size; i++) {
-			*(arr + i) = randf(low, high, 1);
-		}
-}
-
-template <typename T>
-int sum(T* arr, size_t size) {
-	int s = 0;
-	for (int i = 0; i < size; i++) {
-		s += *(arr + i);
-	}
-	return s;
-}
 
 int main() {
 	setlocale(0, "");
@@ -53,7 +33,25 @@ int main() {
 	cout << "Геометрия: " << *(mids+1); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
 	cout << "Физика: " << *(mids+2); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
 
-	cout << endl << "Лучшая успеваемость по " << (mids == max_element(mids, mids + 3) ? "алгебре" : mids + 1 == max_element(mids, mids + 3) ? "геометрии" : "физике") << "  (" << *max_element(mids, mids+3) << ")\n\n\n\n\n\n\n\n\n\n";
+	cout << endl << "Лучшая успеваемость - по " << (mids == max_element(mids, mids + 3) ? "алгебре" : mids + 1 == max_element(mids, mids + 3) ? "геометрии" : "физике") << "  (" << *max_element(mids, mids+3) << ")\n\n\n\n\n\n\n";
+
+
+	cout << "| Задача №2 |\n\n";
+
+	//                                              ЗАДАЧА №2
+
+	typedef float MT1;  // при случайных значениях типа float вероятость получить 0 крайне маленькая, так что может таки int?
+
+	n = input<int>("Введите размер массива: ", true);
+
+	MT1* O = new MT1[n]; fill_random<MT1>(O, n);
+
+	unsigned int counter = 0;
+	for (int i = 0; i < n; i++) {
+		if (*(O + i) == 0) counter++;
+	}
+
+	cout << "\nНулей в массиве:  " << counter << "\n\n\n\n\n\n\n\n\n\n\n";
 
 	return 0;
 }

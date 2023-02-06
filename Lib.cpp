@@ -50,13 +50,13 @@ float Q_rsqrt(float number)
 
 	return y;
 }
-int randint(int low, int high)
+int randi(int low, int high)
 {
-	return low + rand() % (high - low + 1);
+	return (low == NULL && high == NULL ? rand()-16383 : low + rand() % (high - low + 1));
 }
 double randf(double low, double high, int precision) {
 	double value = rand() % (int)pow(10, precision);
-	return low + (value / pow(10, precision)) * (high - low);
+	return (low==NULL && high == NULL? value / pow(10, precision) + rand() - 16383 : low + (value / pow(10, precision)) * (high - low));
 }
 
 bool SpecialFunctionsForLabs::is_int(string str)

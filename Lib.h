@@ -8,6 +8,12 @@
 #include <random>
 using namespace std;
 
+
+// Random
+int randi(int low=NULL, int high=NULL);	// Возвращает случайное число между low и high включительно
+double randf(double low=NULL, double high=NULL, int precision=2); // Возвращает случайное число между low и high с точностью precision
+
+
 // Функции для строк
 namespace strf {
 	vector<string> split(string str, char separator = ' ');
@@ -23,6 +29,27 @@ namespace arrf {
 			cout << *(arr + i) << (i != size - 1? "  " : "");
 		}
 		cout << "\t]\n";
+	}
+	
+	template <typename T>
+	void fill_random(T* arr, size_t size, int low=NULL, int high=NULL) {
+		if (is_same<T, int>::value)
+			for (int i = 0; i < size; i++) {
+				*(arr + i) = randi(low, high);
+			}
+		else
+			for (int i = 0; i < size; i++) {
+				*(arr + i) = randf(low, high);
+			}
+	}
+
+	template <typename T>
+	int sum(T* arr, size_t size) {
+		int s = 0;
+		for (int i = 0; i < size; i++) {
+			s += *(arr + i);
+		}
+		return s;
 	}
 }
 
@@ -68,8 +95,4 @@ namespace SpecialFunctionsForLabs {
 
 // Просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
 float Q_rsqrt(float number);
-
-// Random
-int randint(int low, int high);	// Возвращает случайное число между low и high включительно
-double randf(double low, double high, int precision); // Возвращает случайное число между low и high с точностью precision
 
