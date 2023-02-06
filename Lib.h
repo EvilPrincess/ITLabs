@@ -14,6 +14,18 @@ namespace strf {
 	unsigned int len(string str);
 }
 
+// Функции для массивов
+namespace arrf {
+	template <typename T>
+	void print(T* arr, size_t size) {
+		cout << "[  ";
+		for (unsigned int i = 0; i < size; i++) {
+			cout << *(arr + i) << (i != size - 1? "  " : "");
+		}
+		cout << "\t]\n";
+	}
+}
+
 // Специальные невероятные лучшие гениальнейшие функции для лабораторных работ :3
 namespace SpecialFunctionsForLabs {
 	bool is_int(string str);
@@ -57,6 +69,7 @@ namespace SpecialFunctionsForLabs {
 // Просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
 float Q_rsqrt(float number);
 
-// Возвращает случайное число между low и high включительно
-int randint(int low, int high);
+// Random
+int randint(int low, int high);	// Возвращает случайное число между low и high включительно
+double randf(double low, double high, int precision); // Возвращает случайное число между low и high с точностью precision
 

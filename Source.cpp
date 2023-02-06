@@ -3,15 +3,21 @@
 using namespace SpecialFunctionsForLabs;
 using namespace strf;
 
-template <int size>
-void fill_random(int* arr, size_t size, int low, int high) {
-	for (int i = 0; i < size; i++) {
-		*(arr + i) = randint(low, high);
-	}
+
+template <typename T>
+void fill_random(T* arr, size_t size, int low, int high) {
+	if (is_same<T, int>::value)
+		for (int i = 0; i < size; i++) {
+			*(arr + i) = randint(low, high);
+		}
+	else
+		for (int i = 0; i < size; i++) {
+			*(arr + i) = randf(low, high, 1);
+		}
 }
 
-template <int size>
-int sum(int* arr, size_t size) {
+template <typename T>
+int sum(T* arr, size_t size) {
 	int s = 0;
 	for (int i = 0; i < size; i++) {
 		s += *(arr + i);
@@ -24,15 +30,30 @@ int main() {
 	setlocale(LC_NUMERIC, "C");
 	srand(time(NULL));
 
+	cout << "|| Лабораторная работа №1 (сем. 2)\t||\n|| Вариант №20\t\t\t\t||\n|| Группа: ВПР12\t\t\t||\n|| Студент: Фомин Н. А.\t\t\t||\n\n";
+	cout << "| Задача №1 |\n\n";
+
+	//                                              ЗАДАЧА №1
+
+	bool SHOW_ARRAYS = 0;  // если потребуется выводить все значения массивов
+	typedef float MT;  // MarkType - если потребуется изменить тип значений самих оценок
+
 	size_t n = input<int>("Введите кол-во учащихся: ", true);
 
-	int* A = new int[n] {}; fill_random(A, n, 2, 5);
-	int* G = new int[n] {}; fill_random(G, n, 2, 5);
-	int* F = new int[n] {}; fill_random(F, n, 2, 5);
+	cout << endl;
 
-	int mids[]{sum(A, n)/n, sum(G, n)/n, sum(F, n)/n};
+	MT* A = new MT[n] {}; fill_random<MT>(A, n, 2, 5);
+	MT* G = new MT[n] {}; fill_random<MT>(G, n, 2, 5);
+	MT* F = new MT[n] {}; fill_random<MT>(F, n, 2, 5);
 
-	cout << "Алгебра: " << *(mids) << endl << "Геометрия: " << *(mids + 1) << endl << "Физика: " << *(mids + 2) << endl << endl;
+
+	double mids[]{ (double)sum<MT>(A, n)/(double)n, (double)sum<MT>(G, n)/(double)n, (double)sum<MT>(F, n)/(double)n};
+
+	cout << "Алгебра: " << *(mids); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(A, n); } else cout << endl;
+	cout << "Геометрия: " << *(mids+1); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
+	cout << "Физика: " << *(mids+2); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
+
+	cout << endl << "Лучшая успеваемость по " << (mids == max_element(mids, mids + 3) ? "алгебре" : mids + 1 == max_element(mids, mids + 3) ? "геометрии" : "физике") << "  (" << *max_element(mids, mids+3) << ")\n\n\n\n\n\n\n\n\n\n";
 
 	return 0;
 }

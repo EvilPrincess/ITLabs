@@ -2,6 +2,7 @@
 
 using namespace strf;
 using namespace SpecialFunctionsForLabs;
+using namespace arrf;
 
 unsigned int strf::len(string str) 
 {
@@ -52,6 +53,10 @@ float Q_rsqrt(float number)
 int randint(int low, int high)
 {
 	return low + rand() % (high - low + 1);
+}
+double randf(double low, double high, int precision) {
+	double value = rand() % (int)pow(10, precision);
+	return low + (value / pow(10, precision)) * (high - low);
 }
 
 bool SpecialFunctionsForLabs::is_int(string str)
