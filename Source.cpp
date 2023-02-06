@@ -1,4 +1,4 @@
-#include "Lib.h"
+﻿#include "Lib.h"
 
 using namespace SpecialFunctionsForLabs;
 using namespace strf;
@@ -8,6 +8,5 @@ int main() {
 	setlocale(LC_NUMERIC, "C");
 
 	
-
 	return 0;
 }

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 
 #include <iostream>
@@ -7,13 +7,13 @@
 #include <math.h>
 using namespace std;
 
-// функции для строк
+// С„СѓРЅРєС†РёРё РґР»СЏ СЃС‚СЂРѕРє
 namespace strf {
 	vector<string> split(string str, char separator = ' ');
 	unsigned int len(string str);
 }
 
-// специальные невероятные лучшие гениальнейшие функции для лабораторных работ :3
+// СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РЅРµРІРµСЂРѕСЏС‚РЅС‹Рµ Р»СѓС‡С€РёРµ РіРµРЅРёР°Р»СЊРЅРµР№С€РёРµ С„СѓРЅРєС†РёРё РґР»СЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹С… СЂР°Р±РѕС‚ :3
 namespace SpecialFunctionsForLabs {
 	bool is_int(string str);
 	bool is_float(string str);
@@ -29,21 +29,21 @@ namespace SpecialFunctionsForLabs {
 
 		if (is_same<T, int>::value) {
 			while ((natural && !is_natural(input)) || !is_int(input)) {
-				cout << "Ошибка ввода! Повторите ввод: ";
+				cout << "РћС€РёР±РєР° РІРІРѕРґР°! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 				cin >> input;
 			}
 			return stoi(input);
 		}
 		else if (is_same<T, float>::value) {
 			while (!is_float(input)) {
-				cout << "Ошибка ввода! Повторите ввод: ";
+				cout << "РћС€РёР±РєР° РІРІРѕРґР°! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 				cin >> input;
 			}
-			return stof(input);  // для setlocale(LC_NUMERIC, "C")
+			return stof(input);  // РґР»СЏ setlocale(LC_NUMERIC, "C")
 		}
 		else if (is_same<T, char>::value) {
 			while (!is_char(input)) {
-				cout << "Ошибка ввода! Повторите ввод: ";
+				cout << "РћС€РёР±РєР° РІРІРѕРґР°! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 				cin >> input;
 			}
 			return input[0];
@@ -53,6 +53,6 @@ namespace SpecialFunctionsForLabs {
 	}
 }
 
-// просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
+// РїСЂРѕСЃС‚Рѕ РєСЂСѓС‚РѕР№ Р°Р»РіРѕСЂРёС‚Рј РґР»СЏ РєСЂР°Р№РЅРµ Р±С‹СЃС‚СЂРѕРіРѕ РІС‹С‡РёСЃР»РµРЅРёСЏ 1 / sqrt(x)
 float Q_rsqrt(float number);
 
