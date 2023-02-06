@@ -5,15 +5,16 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <random>
 using namespace std;
 
-// функции для строк
+// Функции для строк
 namespace strf {
 	vector<string> split(string str, char separator = ' ');
 	unsigned int len(string str);
 }
 
-// специальные невероятные лучшие гениальнейшие функции для лабораторных работ :3
+// Специальные невероятные лучшие гениальнейшие функции для лабораторных работ :3
 namespace SpecialFunctionsForLabs {
 	bool is_int(string str);
 	bool is_float(string str);
@@ -53,6 +54,9 @@ namespace SpecialFunctionsForLabs {
 	}
 }
 
-// просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
+// Просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
 float Q_rsqrt(float number);
+
+// Возвращает случайное число между low и high включительно
+int randint(int low, int high);
 

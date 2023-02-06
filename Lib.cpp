@@ -49,6 +49,10 @@ float Q_rsqrt(float number)
 
 	return y;
 }
+int randint(int low, int high)
+{
+	return low + rand() % (high - low + 1);
+}
 
 bool SpecialFunctionsForLabs::is_int(string str)
 {
@@ -64,7 +68,6 @@ bool SpecialFunctionsForLabs::is_int(string str)
 
 	return true;
 }
-
 bool SpecialFunctionsForLabs::is_float(string str)
 {
 	char availables[]{ '-', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -82,7 +85,6 @@ bool SpecialFunctionsForLabs::is_float(string str)
 
 	return true;
 }
-
 bool SpecialFunctionsForLabs::is_natural(string str)
 {
 	char availables[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -91,7 +93,6 @@ bool SpecialFunctionsForLabs::is_natural(string str)
 
 	return true;
 }
-
 bool SpecialFunctionsForLabs::is_char(string str)
 {
 	if (len(str) == 1) return true;
