@@ -98,6 +98,11 @@ bool SpecialFunctionsForLabs::is_natural(string str)
 
 	return true;
 }
+double SpecialFunctionsForLabs::round(double value, unsigned int precision)
+{
+	double k = pow(10, precision);
+	return (int)(value * k + 0.5) / k;
+}
 bool SpecialFunctionsForLabs::is_char(string str)
 {
 	if (len(str) == 1) return true;

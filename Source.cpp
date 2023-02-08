@@ -18,6 +18,7 @@ int main() {
 
 	bool SHOW_ARRAYS = 0;  // если потребуется выводить все значения массивов
 	typedef float MT;  // MarkType - если потребуется изменить тип значений самих оценок
+	unsigned int precision = 2;  // знаков после запятой в вычислениях
 
 	size_t n = input<int>("Введите кол-во учащихся: ", true);
 
@@ -34,11 +35,11 @@ int main() {
 		(double)sum<MT>(F, n)/(double)n
 	};
 
-	cout << "Алгебра: " << *(average); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(A, n); } else cout << endl;
-	cout << "Геометрия: " << *(average+1); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
-	cout << "Физика: " << *(average+2); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
+	cout << "Алгебра: " << round(*(average), precision); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(A, n); } else cout << endl;
+	cout << "Геометрия: " << round(*(average+1), precision); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
+	cout << "Физика: " << round(*(average+2), precision); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
 
-	cout << endl << "Лучшая успеваемость - по " << (average == max_element(average, average + 3) ? "алгебре" : average + 1 == max_element(average, average + 3) ? "геометрии" : "физике") << "  (" << *max_element(average, average+3) << ")\n\n\n\n\n\n\n";
+	cout << endl << "Лучшая успеваемость - по " << (average == max_element(average, average + 3) ? "алгебре" : average + 1 == max_element(average, average + 3) ? "геометрии" : "физике") << "  (" << round(*max_element(average, average + 3), precision) << ")\n\n\n\n\n\n\n";
 
 
 	cout << "| Задача №2 |\n\n";

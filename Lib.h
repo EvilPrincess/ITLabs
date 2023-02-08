@@ -91,6 +91,8 @@ namespace SpecialFunctionsForLabs {
 
 		return NULL;
 	}
+
+	double round(double value, unsigned int precision);
 }
 
 // Просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
