@@ -1,6 +1,9 @@
 ﻿#include "Lib.h"
 
 
+//#define SHOW_ARRAYS 1
+
+
 using namespace SpecialFunctionsForLabs;
 using namespace strf;
 using namespace arrf;
