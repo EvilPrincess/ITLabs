@@ -1,5 +1,6 @@
 ﻿#include "Lib.h"
 
+
 using namespace SpecialFunctionsForLabs;
 using namespace strf;
 using namespace arrf;
@@ -27,13 +28,17 @@ int main() {
 	MT* F = new MT[n] {}; fill_random<MT>(F, n, 2, 5);
 
 
-	double mids[]{ (double)sum<MT>(A, n)/(double)n, (double)sum<MT>(G, n)/(double)n, (double)sum<MT>(F, n)/(double)n};
+	double average[]{ 
+		(double)sum<MT>(A, n)/(double)n, 
+		(double)sum<MT>(G, n)/(double)n, 
+		(double)sum<MT>(F, n)/(double)n
+	};
 
-	cout << "Алгебра: " << *(mids); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(A, n); } else cout << endl;
-	cout << "Геометрия: " << *(mids+1); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
-	cout << "Физика: " << *(mids+2); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
+	cout << "Алгебра: " << *(average); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(A, n); } else cout << endl;
+	cout << "Геометрия: " << *(average+1); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(G, n); } else cout << endl;
+	cout << "Физика: " << *(average+2); if (SHOW_ARRAYS) { cout << "\t:\t"; arrf::print<MT>(F, n); } else cout << endl;
 
-	cout << endl << "Лучшая успеваемость - по " << (mids == max_element(mids, mids + 3) ? "алгебре" : mids + 1 == max_element(mids, mids + 3) ? "геометрии" : "физике") << "  (" << *max_element(mids, mids+3) << ")\n\n\n\n\n\n\n";
+	cout << endl << "Лучшая успеваемость - по " << (average == max_element(average, average + 3) ? "алгебре" : average + 1 == max_element(average, average + 3) ? "геометрии" : "физике") << "  (" << *max_element(average, average+3) << ")\n\n\n\n\n\n\n";
 
 
 	cout << "| Задача №2 |\n\n";
