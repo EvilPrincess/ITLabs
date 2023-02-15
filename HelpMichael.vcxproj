@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Lib.cpp" />
+    <ClCompile Include="Extra.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
