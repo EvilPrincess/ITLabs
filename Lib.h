@@ -72,6 +72,7 @@ namespace SpecialFunctionsForLabs {
 				cout << "Ошибка ввода! Повторите ввод: ";
 				cin >> input;
 			}
+			cin.ignore(1);
 			return stoi(input);
 		}
 		else if (is_same<T, float>::value) {
@@ -79,6 +80,7 @@ namespace SpecialFunctionsForLabs {
 				cout << "Ошибка ввода! Повторите ввод: ";
 				cin >> input;
 			}
+			cin.ignore(1);
 			return stof(input);  // для setlocale(LC_NUMERIC, "C")
 		}
 		else if (is_same<T, char>::value) {
@@ -86,6 +88,7 @@ namespace SpecialFunctionsForLabs {
 				cout << "Ошибка ввода! Повторите ввод: ";
 				cin >> input;
 			}
+			cin.ignore(1);
 			return input[0];
 		}
 
