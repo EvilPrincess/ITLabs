@@ -57,7 +57,7 @@ int main() {
 		}
 	}
 
-	cout << "Сжатый текст:\n\n" << text << "\n\n\n";
+	cout << "\nСжатый текст:\n\n" << text << "\n\n\n";
 
 	return 0;
 }
