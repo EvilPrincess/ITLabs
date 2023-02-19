@@ -1,5 +1,4 @@
 ﻿#include "Lib.h"
-#include <windows.h>
 
 
 using namespace SpecialFunctionsForLabs;
@@ -10,7 +9,7 @@ using namespace arrf;
 int main() {
 	setlocale(LC_ALL, "Russian");
 	setlocale(LC_NUMERIC, "C");
-	SetConsoleCP(1251);
+	system("chcp 1251");
 
 
 	cout << "|| Лабораторная работа №1 (сем. 2)\t||\n|| Вариант №20\t\t\t\t||\n|| Группа: ВПР12\t\t\t||\n|| Студент: Фомин Н. А.\t\t\t||\n\n";
