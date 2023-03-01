@@ -1,5 +1,9 @@
 ﻿#pragma once
 
+#define _USE_MATH_DEFINES
+
+#define ARAD 0
+#define ADEG 1
 
 #include <iostream>
 #include <string>
@@ -100,4 +104,89 @@ namespace SpecialFunctionsForLabs {
 
 // Просто крутой алгоритм для крайне быстрого вычисления 1 / sqrt(x)
 float Q_rsqrt(float number);
+
+
+// Класс матрицы???
+class Matrix
+{
+
+};
+
+//	Класс угла..?
+class Angle
+{
+private:
+	double radians, degrees;
+public:
+	
+	// Конструктор
+	Angle();
+
+	// Конструктор со значением (если type == ARAD, то считается, что значение задается в радианах, если ADEG - наоборот)
+	Angle(double _value, bool _type = ADEG);
+
+	// Получение значения
+	double GetValue(bool _type = ADEG);
+
+	// Очень много перегрузок операторов
+	friend ostream& operator << (ostream& os, Angle& _Angle);
+	friend istream& operator >> (istream& is, Angle& _Angle);
+	Angle operator + (Angle& _Other);
+	Angle operator + (double _deg);
+	Angle operator - (Angle& _Other);
+	Angle operator - (double _deg);
+	void operator += (Angle& _Other);
+	void operator += (double _deg);
+	void operator -= (Angle& _Other);
+	void operator -= (double _deg);
+};
+
+// Класс вектора2
+class Vector2
+{
+private:
+	double length;
+	bool isValid;
+
+	void Invalidate();
+	void Validate();
+public:
+	double x, y;
+
+	// Конструктор без значений
+	Vector2();
+
+	// Конструктор со значениями
+	Vector2(double _x, double _y);
+
+	// Вычисление длины
+	double Len();
+
+	// Векторное умножение
+	static Vector2 MultiplyVector2(Vector2& _Left, Vector2& _Right, Angle& _Angle);
+
+
+	// Очень много перегрузок операторов
+	friend ostream& operator << (ostream& os, Vector2& _Vec);
+	friend istream& operator >> (istream& is, Vector2& _Vec);
+	Vector2 operator + (Vector2& _Other);
+	void operator += (Vector2& _Other);
+	Vector2 operator - (Vector2& _Other);
+	void operator -= (Vector2& _Other);
+	double operator * (Vector2& _Other);
+
+	// Готовые направления
+	static Vector2 ZERO;
+	static Vector2 RIGHT;
+	static Vector2 UP;
+	static Vector2 LEFT;
+	static Vector2 DOWN;
+};
+
+
+// Класс вектора3
+class Vector3
+{
+
+};
 

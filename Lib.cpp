@@ -106,3 +106,67 @@ bool SpecialFunctionsForLabs::is_char(string str)
 	if (len(str) == 1) return true;
 	return false;
 }
+
+
+
+Angle::Angle()
+{
+	radians = 0;
+	degrees = 0;
+}
+Angle::Angle(double _value, bool _type)
+{
+	if (_type == ARAD) {
+		radians = _value;
+		degrees = _value * 180 / (double)M_PI;
+	}
+	else {
+		degrees = _value;
+		radians = _value * M_PI / 180.0;
+	}
+}
+double Angle::GetValue(bool _type)
+{
+	if (_type == ADEG) return degrees;
+	else return radians;
+}
+
+
+Vector2 Vector2::ZERO = Vector2();
+Vector2 Vector2::RIGHT = Vector2(1, 0);
+Vector2 Vector2::UP = Vector2(0, -1);
+Vector2 Vector2::LEFT = Vector2(-1, 0);
+Vector2 Vector2::DOWN = Vector2(0, 1);
+Vector2::Vector2()
+{
+	x = 0;
+	y = 0;
+	this->Len();
+}
+Vector2::Vector2(double _x, double _y)
+{
+	x = _x;
+	y = _y;
+	this->Len();
+}
+double Vector2::Len()
+{
+	if (!this->isValid) {
+		length = sqrt(x*x + y*y);
+		this->Validate();
+	}
+	return length;
+}
+void Vector2::Invalidate()
+{
+	isValid = false;
+}
+void Vector2::Validate()
+{
+	isValid = true;
+}
+ostream& operator << (ostream& os, Vector2& _Vec)
+{
+	cout << "(" << _Vec.x << "; " << _Vec.y << ")";
+	return os;
+}
