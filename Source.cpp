@@ -18,11 +18,6 @@ int main() {
 	//                                              ЗАДАЧА №1
 	cout << "| Задача №1 |\n\n";
 
-	cout << "Для начала найдем граничные коды заданных областей:" << endl;
-	cout << "a-z: " << (int)'a' << " -- " << (int)'z' << endl;
-	cout << "а-я: " << (int)'а' << " -- " << (int)'я' << endl;
-	cout << "А-Я: " << (int)'А' << " -- " << (int)'Я' << endl << endl;
-
 	cout << "Введите строку: ";
 	string str;	getline(cin, str);
 	cout << "\n\n";
@@ -31,7 +26,7 @@ int main() {
 	unsigned int counter = 0;
 
 	for (int c : str)
-		if ((97 <= c && c <= 122) || (-32 <= c && c <= -1) || (-64 <= c && c <= -33) || c == -72)
+		if (('a' <= c && c <= 'z') || ('а' <= c && c <= 'я') || ('А' <= c && c <= 'Я') || c == 'ё' || c == 'Ё')
 			counter++;
 
 	cout << "Количество символов по условию задачи: " << counter << "\n\n\n";
