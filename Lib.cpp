@@ -67,8 +67,7 @@ bool SpecialFunctionsForLabs::is_int(string str)
 	if (count(str.begin(), str.end(), '-') > 1) return false;
 
 	for (char c : str) {
-		if (find(begin(availables), end(availables), c) != end(availables)) continue;
-		else return false;
+		if (find(begin(availables), end(availables), c) == end(availables)) return false;
 	}
 
 	return true;
@@ -84,8 +83,7 @@ bool SpecialFunctionsForLabs::is_float(string str)
 	if (count(str.begin(), str.end(), '.') > 0 && (str[0] == '.' || str[0] == '-' && str[1] == '.' || str.back() == '.')) return false;
 
 	for (char c : str) {
-		if (find(begin(availables), end(availables), c) != end(availables)) continue;
-		else return false;
+		if (find(begin(availables), end(availables), c) == end(availables)) return false;
 	}
 
 	return true;
