@@ -172,12 +172,11 @@ public:
 	static Vector2 MultiplyVector(Vector2& _Left, Vector2& _Right, Angle _Angle);
 	static Vector2 MultiplyVector(Vector2& _Left, Vector2& _Right, Angle& _Angle);
 
-	// Косинус между векторами
+	// Угол между векторами
 	static Angle FindAngle(Vector2 _Left, Vector2 _Right);
 	static Angle FindAngle(Vector2 _Left, Vector2& _Right);
 	static Angle FindAngle(Vector2& _Left, Vector2 _Right);
 	static Angle FindAngle(Vector2& _Left, Vector2& _Right);
-
 
 	// Очень много перегрузок операторов
 	friend ostream& operator << (ostream& os, Vector2& _Vec);
