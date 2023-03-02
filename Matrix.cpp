@@ -1,4 +1,4 @@
-#include "Matrix.h"
+﻿#include "Matrix.h"
 
 Matrix::Matrix()
 {
@@ -7,6 +7,10 @@ Matrix::Matrix()
 Matrix::Matrix(Point _size)
 {
 	Generate(_size);
+}
+Matrix::Matrix(int _lines, int _cols)
+{
+	Generate(Point(_cols, _lines));
 }
 void Matrix::Generate(Point _size)
 {
@@ -32,6 +36,10 @@ double* Matrix::GetElem(Point _pos)
 {
 	return &table[(int)_pos.y][(int)_pos.x];
 }
+double* Matrix::GetElem(int _line, int _col)
+{
+	return &table[_line][_col];
+}
 void Matrix::SetElem(Point _pos, double _value)
 {
 	table[(int)_pos.y][(int)_pos.x] = _value;
@@ -52,7 +60,25 @@ void Matrix::SetCol(unsigned int _col, double* _values)
 }
 double Matrix::Determinant()
 {
+	if (this->size.x != this->size.y) {
+		return NULL;
+	}
+	if (this->size == Point(1, 1)) return *GetElem(0, 0);
+	if (this->size == Point(2, 2)) return *GetElem(0, 0) * *GetElem(1, 1) - *GetElem(0, 1) * *GetElem(1, 0);
 
+	double dt = 0;
+	for (int block = 0; block < size.x; block++) {
+		Matrix new_matrix(size.x - 1, size.x - 1);
+		for (int y = 1; y < size.y; y++) {
+			bool flag = false;
+			for (int x = 0; x < size.x; x++) {
+				if (x == block) { flag = true; continue; }
+				new_matrix.SetElem(Point((flag ? x - 1 : x), y-1), *GetElem(y, x));
+			}
+		}
+		dt += (block % 2 != 0 ? -1 : 1) * *GetElem(0, block) * new_matrix.Determinant();
+	}
+	return dt;
 }
 ostream& operator << (ostream& os, Matrix& _Matrix)
 {

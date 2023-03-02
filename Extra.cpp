@@ -5,7 +5,13 @@ using namespace std;
 
 int main() {
 
-	cout << Vector2::FindAngle(Vector2::RIGHT, Vector2(2, 2)).GetValue(ADEG) << endl;
+	Matrix m(3, 3);
+
+	m.SetLine(0, new double[3] {1, 2, 3});
+	m.SetLine(1, new double[3] {4, 10, 6});
+	m.SetLine(2, new double[3] {7, 8, 9});
+
+	cout << m.Determinant() << endl;
 
 	return 0;
 }
