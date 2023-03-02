@@ -163,17 +163,30 @@ public:
 	double Len();
 
 	// Векторное умножение
-	static Vector2 MultiplyVector2(Vector2& _Left, Vector2& _Right, Angle& _Angle);
+	static Vector2 MultiplyVector(Vector2 _Left, Vector2 _Right, Angle _Angle);
+	static Vector2 MultiplyVector(Vector2 _Left, Vector2 _Right, Angle& _Angle);
+	static Vector2 MultiplyVector(Vector2 _Left, Vector2& _Right, Angle _Angle);
+	static Vector2 MultiplyVector(Vector2 _Left, Vector2& _Right, Angle& _Angle);
+	static Vector2 MultiplyVector(Vector2& _Left, Vector2 _Right, Angle _Angle);
+	static Vector2 MultiplyVector(Vector2& _Left, Vector2 _Right, Angle& _Angle);
+	static Vector2 MultiplyVector(Vector2& _Left, Vector2& _Right, Angle _Angle);
+	static Vector2 MultiplyVector(Vector2& _Left, Vector2& _Right, Angle& _Angle);
+
+	// Косинус между векторами
+	static Angle FindAngle(Vector2 _Left, Vector2 _Right);
+	static Angle FindAngle(Vector2 _Left, Vector2& _Right);
+	static Angle FindAngle(Vector2& _Left, Vector2 _Right);
+	static Angle FindAngle(Vector2& _Left, Vector2& _Right);
 
 
 	// Очень много перегрузок операторов
 	friend ostream& operator << (ostream& os, Vector2& _Vec);
+	friend ostream& operator << (ostream& os, Vector2 _Vec);
 	friend istream& operator >> (istream& is, Vector2& _Vec);
-	Vector2 operator + (Vector2& _Other);
-	void operator += (Vector2& _Other);
-	Vector2 operator - (Vector2& _Other);
-	void operator -= (Vector2& _Other);
-	double operator * (Vector2& _Other);
+	Vector2& operator += (Vector2 _Other);
+	Vector2& operator -= (Vector2& _Other);
+
+	/* Все бинарные операторы объявлены вне класса и описаны в файле Lib.cpp */
 
 	// Готовые направления
 	static Vector2 ZERO;
@@ -182,6 +195,13 @@ public:
 	static Vector2 LEFT;
 	static Vector2 DOWN;
 };
+
+Vector2 operator + (Vector2& _Left, Vector2& _Right);
+Vector2 operator + (Vector2 _Left, Vector2 _Right);
+Vector2 operator - (Vector2& _Left, Vector2& _Right);
+Vector2 operator - (Vector2 _Left, Vector2 _Right);
+double operator * (Vector2& _Left, Vector2& _Right);	// это будет скалярное произведение
+double operator * (Vector2 _Left, Vector2 _Right);		// это будет скалярное произведение
 
 
 // Класс вектора3

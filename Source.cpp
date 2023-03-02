@@ -17,7 +17,7 @@ int main() {
 
 	//                                              ЗАДАЧА №1
 	cout << "| Задача №1 |\n\n";
-
+	cout << Vector2::FindAngle(Vector2(1, 3), Vector2(2, 4)).GetValue(ADEG) << endl << endl;
 	cout << "Введите строку: ";
 	string str;	getline(cin, str);
 	cout << "\n\n";
