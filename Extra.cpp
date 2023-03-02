@@ -1,13 +1,11 @@
 #include "Header.h"
 #include "Matrix.h"
+#include "Vector2.h"
 using namespace std;
 
 int main() {
-	
-	Matrix m(Point(3, 3));
-	m.SetCol(1, new double[3] {2, 3, 4});
 
-	cout << m << endl;
+	cout << Vector2::FindAngle(Vector2::RIGHT, Vector2(2, 2)).GetValue(ADEG) << endl;
 
 	return 0;
 }

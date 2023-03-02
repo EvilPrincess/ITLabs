@@ -36,26 +36,14 @@ void Vector2::Validate()
 {
 	isValid = true;
 }
-Angle Vector2::FindAngle(Vector2 _Left, Vector2 _Right)
+Angle Vector2::FindAngle(const Vector2& _Left, const Vector2& _Right)
 {
-	return Angle(acos((_Left.x * _Right.x + _Left.y * _Right.y) / (_Left.Len() * _Right.Len())), ARAD);
-}
-Angle Vector2::FindAngle(Vector2 _Left, Vector2& _Right)
-{
-	return Angle(acos((_Left.x * _Right.x + _Left.y * _Right.y) / (_Left.Len() * _Right.Len())), ARAD);
-}
-Angle Vector2::FindAngle(Vector2& _Left, Vector2 _Right)
-{
-	return Angle(acos((_Left.x * _Right.x + _Left.y * _Right.y) / (_Left.Len() * _Right.Len())), ARAD);
-}
-Angle Vector2::FindAngle(Vector2& _Left, Vector2& _Right)
-{
-	return Angle(acos((_Left.x * _Right.x + _Left.y * _Right.y) / (_Left.Len() * _Right.Len())), ARAD);
+	return Angle(acos((_Left.x * _Right.x + _Left.y * _Right.y) / (_Left.length * _Right.length)), ARAD);
 }
 
 
 // Описание перегрузок операторов для Vector2
-ostream& operator << (ostream& os, const Vector2& _Vec)
+ostream& operator << (ostream& os, Vector2& _Vec)
 {
 	cout << "(" << _Vec.x << "; " << _Vec.y << ")";
 	return os;
@@ -65,7 +53,7 @@ ostream& operator << (ostream& os, Vector2 _Vec)
 	cout << "(" << _Vec.x << "; " << _Vec.y << ")";
 	return os;
 }
-Vector2 operator + (const Vector2& _Left, const Vector2& _Right)
+Vector2 operator + (Vector2& _Left, Vector2& _Right)
 {
 	return Vector2(_Left.x + _Right.x, _Left.y + _Right.y);
 }
@@ -87,7 +75,7 @@ Vector2 operator - (Vector2 _Left, Vector2 _Right)
 {
 	return Vector2(_Left.x - _Right.x, _Left.y - _Right.y);
 }
-Vector2& Vector2::operator -= (Vector2& _Other)
+Vector2& Vector2::operator -= (const Vector2& _Other)
 {
 	this->x -= _Other.x;
 	this->y -= _Other.y;
@@ -101,7 +89,7 @@ double operator * (Vector2 _Left, Vector2 _Right)
 {
 	return (_Left.x * _Right.x + _Left.y * _Right.y);
 }
-void Vector2::operator = (Vector2& _Other)
+void Vector2::operator = (const Vector2& _Other)
 {
 	this->x = _Other.x;
 	this->y = _Other.y;

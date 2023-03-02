@@ -28,8 +28,10 @@ public:
 
 	friend ostream& operator << (ostream& os, Matrix& _Matrix);
 	void operator += (Matrix& _Other);
-	void operator += (Matrix _Other);
 	void operator -= (Matrix& _Other);
-	void operator -= (Matrix _Other);
 };
+
+Matrix operator + (Matrix& _Left, Matrix& _Right);
+Matrix operator - (Matrix& _Left, Matrix& _Right);
+Matrix operator * (Matrix& _Left, Matrix& _Right);
 
