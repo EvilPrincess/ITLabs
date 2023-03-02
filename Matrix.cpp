@@ -40,14 +40,14 @@ void Matrix::SetLine(unsigned int _line, double* _values)
 {
 	for (int _i = 0; _i < size.x; _i++)
 	{
-		SetElem(Point(_line, _i), _values[_i]);
+		SetElem(Point(_i, _line), _values[_i]);
 	}
 }
 void Matrix::SetCol(unsigned int _col, double* _values)
 {
 	for (int _i = 0; _i < Size().y; _i++)
 	{
-		SetElem(Point(_i, _col), _values[_i]);
+		SetElem(Point(_col, _i), _values[_i]);
 	}
 }
 double Matrix::Determinant()

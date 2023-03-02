@@ -7,6 +7,7 @@
 #include <vector>
 #include <math.h>
 #include <random>
+#include <ctime>
 using namespace std;
 
 
