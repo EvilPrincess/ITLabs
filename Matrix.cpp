@@ -61,6 +61,7 @@ void Matrix::SetCol(unsigned int _col, double* _values)
 double Matrix::Determinant()
 {
 	if (this->size.x != this->size.y) {
+		cout << "Чёт размер не подходит" << endl;
 		return NULL;
 	}
 	if (this->size == Point(1, 1)) return *GetElem(0, 0);
