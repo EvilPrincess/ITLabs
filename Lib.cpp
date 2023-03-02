@@ -233,3 +233,73 @@ double operator * (Vector2 _Left, Vector2 _Right)
 {
 	return (_Left.x * _Right.x + _Left.y * _Right.y);
 }
+
+
+
+// Описание матрицы
+Matrix::Matrix()
+{
+	generate(Vector2(1, 1));
+}
+Matrix::Matrix(Vector2 _size)
+{
+	generate(_size);
+}
+void Matrix::generate(Vector2 _size)
+{
+	size.x = _size.x;
+	size.y = _size.y;
+	table = new double* [_size.x];
+	for (int _i = 0; _i < _size.y; _i++)
+		table[_i] = new double[_size.x];
+	for (int _i = 0; _i < _size.y; _i++) {
+		for (int _j = 0; _j < _size.x; _j++)
+			table[_i][_j] = 0;
+	}
+}
+Vector2 Size()
+{
+	return size;
+}
+double** Matrix::GetTable()
+{
+	return table;
+}
+double* Matrix::GetElem(Vector2 _pos)
+{
+	return &table[_pos.y][_pos.x];
+}
+void Matrix::SetElem(Vector2 _pos, double _value)
+{
+	table[_pos.y][_pos.x] = _value;
+}
+void Matrix::SetLine(unsigned int _line, double* _values)
+{
+	for (int _i = 0; _i < size.x; _i++)
+	{
+		SetElem(Vector2(_line, _i), _values[_i]);
+	}
+}
+void SetCol(unsigned int _col, double* _values)
+{
+	for (int _i = 0; _i < Size().y; _i++)
+	{
+		SetElem(Vector2(_i, _col), _values[_i]);
+	}
+}
+double Determinant()
+{
+
+}
+ostream& Matrix::operator << (ostream& os, Matrix& _Matrix)
+{
+	for (int _line = 0; _line < _Matrix.Size().y; _line++) 
+	{
+		cout << "( ";
+		for (int _col = 0; _col < _Matrix.Size().x; _col++)
+			cout << _Matrix.GetElem(Vector2(_col, _line)) << (_col == _Matrix.Size().x - 1 ? " " : "\t");
+		cout << ")\n";
+	}
+	return os;
+}
+

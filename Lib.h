@@ -109,7 +109,27 @@ float Q_rsqrt(float number);
 // Класс матрицы???
 class Matrix
 {
+private:
+	double** table;
+	Vector2 size;
+public:
+	Matrix();
+	Matrix(Vector2 _size);
+	void generate(Vector2 _size);
+	Vector2 Size();
+	double** GetTable();
+	double* GetElem(Vector2 _pos);
+	void SetElem(Vector2 _pos, double _value);
+	void SetLine(unsigned int _line, double* _values);
+	void SetCol(unsigned int _col, double* _values);
+	double Determinant();
 
+	friend ostream& operator << (ostream& os, Matrix& _Matrix);
+	friend ostream& operator << (ostream& os, Matrix _Matrix);
+	void operator += (Matrix& _Other);
+	void operator += (Matrix _Other);
+	void operator -= (Matrix& _Other);
+	void operator -= (Matrix _Other);
 };
 
 //	Класс угла..?
