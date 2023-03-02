@@ -106,31 +106,6 @@ namespace SpecialFunctionsForLabs {
 float Q_rsqrt(float number);
 
 
-// Класс матрицы???
-class Matrix
-{
-private:
-	double** table;
-	Vector2 size;
-public:
-	Matrix();
-	Matrix(Vector2 _size);
-	void generate(Vector2 _size);
-	Vector2 Size();
-	double** GetTable();
-	double* GetElem(Vector2 _pos);
-	void SetElem(Vector2 _pos, double _value);
-	void SetLine(unsigned int _line, double* _values);
-	void SetCol(unsigned int _col, double* _values);
-	double Determinant();
-
-	friend ostream& operator << (ostream& os, Matrix& _Matrix);
-	void operator += (Matrix& _Other);
-	void operator += (Matrix _Other);
-	void operator -= (Matrix& _Other);
-	void operator -= (Matrix _Other);
-};
-
 //	Класс угла..?
 class Angle
 {
@@ -203,6 +178,7 @@ public:
 	friend istream& operator >> (istream& is, Vector2& _Vec);
 	Vector2& operator += (Vector2 _Other);
 	Vector2& operator -= (Vector2& _Other);
+	void operator = (Vector2& _Other);
 
 	/* Все бинарные операторы объявлены вне класса и описаны в файле Lib.cpp */
 
@@ -221,6 +197,31 @@ Vector2 operator - (Vector2 _Left, Vector2 _Right);
 double operator * (Vector2& _Left, Vector2& _Right);	// это будет скалярное произведение
 double operator * (Vector2 _Left, Vector2 _Right);		// это будет скалярное произведение
 
+// Класс матрицы???
+class Matrix
+{
+private:
+	double** table;
+	Vector2 size;
+
+	void Generate(Vector2 _size);
+public:
+	Matrix();
+	Matrix(Vector2 _size);
+	Vector2 Size();
+	double** GetTable();
+	double* GetElem(Vector2 _pos);
+	void SetElem(Vector2 _pos, double _value);
+	void SetLine(unsigned int _line, double* _values);
+	void SetCol(unsigned int _col, double* _values);
+	double Determinant();
+
+	friend ostream& operator << (ostream& os, Matrix& _Matrix);
+	void operator += (Matrix& _Other);
+	void operator += (Matrix _Other);
+	void operator -= (Matrix& _Other);
+	void operator -= (Matrix _Other);
+};
 
 // Класс вектора3
 class Vector3

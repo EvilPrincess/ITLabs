@@ -233,19 +233,25 @@ double operator * (Vector2 _Left, Vector2 _Right)
 {
 	return (_Left.x * _Right.x + _Left.y * _Right.y);
 }
+void Vector2::operator = (Vector2& _Other)
+{
+	this->x = _Other.x;
+	this->y = _Other.y;
+	this->Invalidate();
+}
 
 
 
 // Описание матрицы
 Matrix::Matrix()
 {
-	generate(Vector2(1, 1));
+	Generate(Vector2(1, 1));
 }
 Matrix::Matrix(Vector2 _size)
 {
-	generate(_size);
+	Generate(_size);
 }
-void Matrix::generate(Vector2 _size)
+void Matrix::Generate(Vector2 _size)
 {
 	size.x = _size.x;
 	size.y = _size.y;
@@ -297,7 +303,7 @@ ostream& operator << (ostream& os, Matrix& _Matrix)
 	{
 		cout << "( ";
 		for (int _col = 0; _col < _Matrix.Size().x; _col++)
-			cout << _Matrix.GetElem(Vector2(_col, _line)) << (_col == _Matrix.Size().x - 1 ? " " : "\t");
+			cout << *_Matrix.GetElem(Vector2(_col, _line)) << (_col == _Matrix.Size().x - 1 ? " " : "\t");
 		cout << ")\n";
 	}
 	return os;
