@@ -128,13 +128,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Lib.cpp" />
     <ClCompile Include="Extra.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Lib.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Vector2.h" />
+    <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
