@@ -125,7 +125,6 @@ public:
 	double Determinant();
 
 	friend ostream& operator << (ostream& os, Matrix& _Matrix);
-	friend ostream& operator << (ostream& os, Matrix _Matrix);
 	void operator += (Matrix& _Other);
 	void operator += (Matrix _Other);
 	void operator -= (Matrix& _Other);

@@ -1,4 +1,4 @@
-﻿#include "Lib.h"
+﻿#include "Header.h"
 
 
 using namespace SpecialFunctionsForLabs;
@@ -6,7 +6,7 @@ using namespace strf;
 using namespace arrf;
 
 
-int main() {
+int fmain() {
 	setlocale(LC_ALL, "Russian");
 	setlocale(LC_NUMERIC, "C");
 	system("chcp 1251");

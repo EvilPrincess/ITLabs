@@ -1,3 +1,3 @@
 #pragma once
 
-// вечно пустой хедер)
+#include "Lib.h"

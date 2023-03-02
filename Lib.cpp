@@ -257,7 +257,7 @@ void Matrix::generate(Vector2 _size)
 			table[_i][_j] = 0;
 	}
 }
-Vector2 Size()
+Vector2 Matrix::Size()
 {
 	return size;
 }
@@ -267,11 +267,11 @@ double** Matrix::GetTable()
 }
 double* Matrix::GetElem(Vector2 _pos)
 {
-	return &table[_pos.y][_pos.x];
+	return &table[(int)_pos.y][(int)_pos.x];
 }
 void Matrix::SetElem(Vector2 _pos, double _value)
 {
-	table[_pos.y][_pos.x] = _value;
+	table[(int)_pos.y][(int)_pos.x] = _value;
 }
 void Matrix::SetLine(unsigned int _line, double* _values)
 {
@@ -280,18 +280,18 @@ void Matrix::SetLine(unsigned int _line, double* _values)
 		SetElem(Vector2(_line, _i), _values[_i]);
 	}
 }
-void SetCol(unsigned int _col, double* _values)
+void Matrix::SetCol(unsigned int _col, double* _values)
 {
 	for (int _i = 0; _i < Size().y; _i++)
 	{
 		SetElem(Vector2(_i, _col), _values[_i]);
 	}
 }
-double Determinant()
+double Matrix::Determinant()
 {
 
 }
-ostream& Matrix::operator << (ostream& os, Matrix& _Matrix)
+ostream& operator << (ostream& os, Matrix& _Matrix)
 {
 	for (int _line = 0; _line < _Matrix.Size().y; _line++) 
 	{
