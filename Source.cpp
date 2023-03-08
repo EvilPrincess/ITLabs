@@ -34,7 +34,7 @@ int fmain() {
 	//                                              ЗАДАЧА №2
 	cout << "| Задача №2 |\n\n";
 	
-	int lines = input<int>("Введите кол-во строк текста: ", true);
+	int lines = input<unsigned int>("Введите кол-во строк текста: ");
 	string text, line;
 
 	cout << "Введите текст из (" << lines << ") строк:\n\n";

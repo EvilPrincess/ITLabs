@@ -63,14 +63,22 @@ namespace SpecialFunctionsForLabs {
 	bool is_natural(string str);
 
 	template<typename T>
-	T input(string message = "", bool natural = 0)
+	T input(string message = "")
 	{
 		cout << message;
 		string input;
 		cin >> input;
 
+		if (is_same<T, unsigned int>::value) {
+			while (!(is_int(input) && stoi(input) > 0)) {
+				cout << "Ошибка ввода! Повторите ввод: ";
+				cin >> input;
+			}
+			cin.ignore(1);
+			return stoi(input);
+		}
 		if (is_same<T, int>::value) {
-			while ((natural && !is_natural(input)) || !is_int(input)) {
+			while (!is_int(input)) {
 				cout << "Ошибка ввода! Повторите ввод: ";
 				cin >> input;
 			}
